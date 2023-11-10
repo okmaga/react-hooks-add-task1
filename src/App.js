@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { useWindowScroll } from "./useWindowScroll";
 
 function App() {
+  const [scroll, scrollTo] = useWindowScroll();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ height: "200vh", width: "200vw" }}>
+      <p>
+        Scroll position x: {scroll.x}, y: {scroll.y}
+      </p>
+      <button onClick={() => scrollTo({ y: 0 })} style={{ position: "fixed" }}>
+        Scroll to top
+      </button>
     </div>
   );
 }
